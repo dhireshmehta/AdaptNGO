@@ -1,15 +1,16 @@
 package org.adapt.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.adapt.domain.LineItem;
 import org.adapt.repository.LineItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Service Implementation for managing {@link LineItem}.
@@ -36,7 +37,7 @@ public class LineItemService {
         log.debug("Request to save LineItem : {}", lineItem);
         return lineItemRepository.save(lineItem);
     }
-
+    
     /**
      * Get all the lineItems.
      *
@@ -47,7 +48,21 @@ public class LineItemService {
         log.debug("Request to get all LineItems");
         return lineItemRepository.findAll();
     }
-
+    
+    public List<LineItem> findByCategory(String category){
+    	log.debug("Request to get by category"+category);
+    	return lineItemRepository.findByCategory(category);
+    }
+    
+    public List<LineItem> findByDesc(String desc){
+    	log.debug("Request to get by desc"+desc);
+    	return lineItemRepository.findByDesc(desc);
+    }
+    
+    public List<LineItem> findByRole(String role){
+    	log.debug("Request to get by role"+role);
+    	return lineItemRepository.findByRole(role);
+    }
 
     /**
      * Get one lineItem by id.

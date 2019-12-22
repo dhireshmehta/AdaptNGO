@@ -10,6 +10,9 @@ public enum TypeEnum{
 		
 	}
 	public static TypeEnum getEnumbyString(String name) {
+		if(name==null) {
+			name="";
+		}
 		name= name.toUpperCase();
 		switch(name) {
 			case "DOCUMENT":

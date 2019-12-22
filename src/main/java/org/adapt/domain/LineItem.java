@@ -143,6 +143,8 @@ public class LineItem implements Serializable {
     	type=TypeEnum.getEnumbyString(type).toString();
         this.type = type;
     }
+    
+    
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

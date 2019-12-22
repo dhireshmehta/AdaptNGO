@@ -89,6 +89,43 @@ public class LineItemResource {
         log.debug("REST request to get all LineItems");
         return lineItemService.findAll();
     }
+    
+    /**
+     * {@code GET  /line-items} : get all the lineItems by Category.
+     *
+
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lineItems in body.
+     */
+    @GetMapping("/line-items/categories")
+    public List<LineItem> getAllLineItemsByCategory(@RequestParam("category") String category) {
+        log.debug("REST request to get all LineItems by Category");
+        return lineItemService.findByCategory(category);
+    }
+    
+    /**
+     * {@code GET  /line-items} : get all the lineItems by Role.
+     *
+
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lineItems in body.
+     */
+    @GetMapping("/line-items/roles")
+    public List<LineItem> getAllLineItemsByRole(@RequestParam("role") String role) {
+        log.debug("REST request to get all LineItems by Role");
+        return lineItemService.findByRole(role);
+    }
+
+    /**
+     * {@code GET  /line-items} : get all the lineItems by Desc.
+     *
+
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lineItems in body.
+     */
+    @GetMapping("/line-items/desc")
+    public List<LineItem> getAllLineItemsByDesc(@RequestParam("desc") String desc) {
+        log.debug("REST request to get all LineItems by Desc");
+        return lineItemService.findByDesc(desc);
+    }
+
 
     /**
      * {@code GET  /line-items/:id} : get the "id" lineItem.
@@ -101,6 +138,27 @@ public class LineItemResource {
         log.debug("REST request to get LineItem : {}", id);
         Optional<LineItem> lineItem = lineItemService.findOne(id);
         return ResponseUtil.wrapOrNotFound(lineItem);
+    }
+    
+    /**
+     * {@code GET  /line-items/:id} : get the "id" lineItem.
+     *
+     * @param id the id of the lineItem to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the lineItem, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/line-items/incrementViews/{id}")
+    public ResponseEntity<Boolean> addView(@PathVariable Long id) {
+        log.debug("REST request to Update LineItem View Count : {}", id);
+        Optional<LineItem> lineItem = lineItemService.findOne(id);
+        if(lineItem.isPresent()) {
+        	LineItem item = lineItem.get();
+        	item.setViewCount(item.getViewCount()+1);
+        	lineItemService.save(item);
+        }
+        else {
+        	return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(true);
     }
 
     /**
