@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="lineItem">
+            <h2><span>Line Item</span> {{lineItem.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{lineItem.name}}</span>
+                </dd>
+                <dt><span>Link</span></dt>
+                <dd>
+                    <span>{{lineItem.link}}</span>
+                </dd>
+                <dt><span>Categories</span></dt>
+                <dd>
+                    <span>{{lineItem.categories}}</span>
+                </dd>
+                <dt><span>Roles</span></dt>
+                <dd>
+                    <span>{{lineItem.roles}}</span>
+                </dd>
+                <dt><span>Desc</span></dt>
+                <dd>
+                    <span>{{lineItem.desc}}</span>
+                </dd>
+                <dt><span>View Count</span></dt>
+                <dd>
+                    <span>{{lineItem.viewCount}}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{lineItem.type}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/line-item', lineItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

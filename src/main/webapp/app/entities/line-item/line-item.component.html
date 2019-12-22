@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span>Line Items</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-line-item" [routerLink]="['/line-item/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Line Item
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="lineItems?.length === 0">
+        <span>No lineItems found</span>
+    </div>
+    <div class="table-responsive" *ngIf="lineItems?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Name</span></th>
+            <th scope="col" ><span>Link</span></th>
+            <th scope="col" ><span>Categories</span></th>
+            <th scope="col" ><span>Roles</span></th>
+            <th scope="col" ><span>Desc</span></th>
+            <th scope="col" ><span>View Count</span></th>
+            <th scope="col" ><span>Type</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let lineItem of lineItems ;trackBy: trackId">
+                <td><a [routerLink]="['/line-item', lineItem.id, 'view' ]">{{lineItem.id}}</a></td>
+                <td>{{lineItem.name}}</td>
+                <td>{{lineItem.link}}</td>
+                <td>{{lineItem.categories}}</td>
+                <td>{{lineItem.roles}}</td>
+                <td>{{lineItem.desc}}</td>
+                <td>{{lineItem.viewCount}}</td>
+                <td>{{lineItem.type}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/line-item', lineItem.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/line-item', lineItem.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(lineItem)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
