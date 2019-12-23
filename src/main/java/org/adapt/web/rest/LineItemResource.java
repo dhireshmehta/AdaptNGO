@@ -90,43 +90,7 @@ public class LineItemResource {
         return lineItemService.findAll();
     }
     
-    /**
-     * {@code GET  /line-items} : get all the lineItems by Category.
-     *
-
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lineItems in body.
-     */
-    @GetMapping("/line-items/categories")
-    public List<LineItem> getAllLineItemsByCategory(@RequestParam("category") String category) {
-        log.debug("REST request to get all LineItems by Category");
-        return lineItemService.findByCategory(category);
-    }
     
-    /**
-     * {@code GET  /line-items} : get all the lineItems by Role.
-     *
-
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lineItems in body.
-     */
-    @GetMapping("/line-items/roles")
-    public List<LineItem> getAllLineItemsByRole(@RequestParam("role") String role) {
-        log.debug("REST request to get all LineItems by Role");
-        return lineItemService.findByRole(role);
-    }
-
-    /**
-     * {@code GET  /line-items} : get all the lineItems by Desc.
-     *
-
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lineItems in body.
-     */
-    @GetMapping("/line-items/desc")
-    public List<LineItem> getAllLineItemsByDesc(@RequestParam("desc") String desc) {
-        log.debug("REST request to get all LineItems by Desc");
-        return lineItemService.findByDesc(desc);
-    }
-
-
     /**
      * {@code GET  /line-items/:id} : get the "id" lineItem.
      *
