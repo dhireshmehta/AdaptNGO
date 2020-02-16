@@ -15,6 +15,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'roles',
         loadChildren: () => import('./roles/roles.module').then(m => m.AdaptNgoRolesModule)
+      },
+      {
+        path: 'end-user',
+        loadChildren: () => import('./end-user/end-user.module').then(m => m.AdaptNgoEndUserModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

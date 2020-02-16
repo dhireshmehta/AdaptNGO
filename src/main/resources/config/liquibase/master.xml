@@ -17,6 +17,7 @@
     <include file="config/liquibase/changelog/20191222181919_added_entity_Category.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191222184541_added_entity_LineItem.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191222182707_added_entity_Roles.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200216113923_added_entity_EndUser.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
