@@ -1,0 +1,156 @@
+API - to check if user exists 
+URL --- http(/s):<hostname>/api/adapt/checkUserNameExists
+METHOD - GET
+INPUT PARAMS - email
+OUTPUT - Boolean
+
+
+API - to get User BY Email
+URL --- http(/s):<hostname>/api/adapt/getUserByEmail
+METHOD - GET
+INPUT PARAMS - email
+OUTPUT - EndUser / null
+OUTPUT ex: 
+{
+  "email": "string",
+  "firstName": "string",
+  "id": 0,
+  "lastName": "string",
+  "roles": "string"
+}
+
+
+API - to get All Roles
+URL --- http(/s):<hostname>/api/adapt/getAllRoles
+METHOD - GET
+INPUT PARAMS - none
+OUTPUT - List of Roles
+OUTPUT ex: 
+[
+  {
+    "id": 0,
+    "roleName": "string"
+  }
+]
+
+
+
+API - to Create or Save EndUser
+URL --- http(/s):<hostname>/api/adapt/createOrSaveEndUser
+METHOD - GET
+INPUT PARAMS - 
+	email String,
+	firstName String,
+	lastName String,
+	roles String (Comma Separated Roles)
+OUTPUT - End User created or Saved
+OUTPUT ex: 
+{
+  "email": "string",
+  "firstName": "string",
+  "id": 0,
+  "lastName": "string",
+  "roles": "string"
+}
+
+
+API - to Find LineItems by Roles 
+URL --- http(/s):<hostname>/api/adapt/getBy/roles
+METHOD - GET
+INPUT PARAMS - 
+	role String (Comma Separated Roles)
+OUTPUT - List of LineItems
+OUTPUT ex: 
+[
+  {
+    "categories": "string",
+    "desc": "string",
+    "id": 0,
+    "link": "string",
+    "name": "string",
+    "roles": "string",
+    "type": "string",
+    "viewCount": 0
+  },
+  {
+    "categories": "string",
+    "desc": "string",
+    "id": 0,
+    "link": "string",
+    "name": "string",
+    "roles": "string",
+    "type": "string",
+    "viewCount": 0
+  }
+]
+
+
+API - to Find LineItems by desc 
+URL --- http(/s):<hostname>/api/adapt/getBy/desc
+INPUT PARAMS - 
+	desc String
+OUTPUT - List of LineItems
+OUTPUT ex: 
+[
+  {
+    "categories": "string",
+    "desc": "string",
+    "id": 0,
+    "link": "string",
+    "name": "string",
+    "roles": "string",
+    "type": "string",
+    "viewCount": 0
+  },
+  {
+    "categories": "string",
+    "desc": "string",
+    "id": 0,
+    "link": "string",
+    "name": "string",
+    "roles": "string",
+    "type": "string",
+    "viewCount": 0
+  }
+]
+
+
+API - to Find LineItems by category 
+URL --- http(/s):<hostname>/api/adapt/getBy/categories
+INPUT PARAMS - 
+	category String
+OUTPUT - List of LineItems
+OUTPUT ex: 
+[
+  {
+    "categories": "string",
+    "desc": "string",
+    "id": 0,
+    "link": "string",
+    "name": "string",
+    "roles": "string",
+    "type": "string",
+    "viewCount": 0
+  },
+  {
+    "categories": "string",
+    "desc": "string",
+    "id": 0,
+    "link": "string",
+    "name": "string",
+    "roles": "string",
+    "type": "string",
+    "viewCount": 0
+  }
+]
+
+
+
+API - to increase ViewCount of any LineItem
+URL --- http(/s):<hostname>/api/adapt/incrementViewCount/{id}
+METHOD - GET
+PATH PARAMS - id number
+INPUT PARAMS - none
+OUTPUT - Boolean
+
+

@@ -107,17 +107,21 @@ public class AdaptResource {
 	public Boolean checkUserNameExists(@RequestParam("email") String email) {
 		return endUserService.checkEndUserExistsByEmail(email);
 	}
-
-	@GetMapping("/adapt/createEndUser")
-	public EndUser createEndUser(@RequestParam("email") String email, @RequestParam("firstName") String firstName,
+	@GetMapping("/adapt/getUserByEmail")
+	public EndUser getUserNameByEmail(@RequestParam("email") String email) {
+		return endUserService.getByEmail(email);
+	}	
+	@GetMapping("/adapt/createOrSaveEndUser")
+	public EndUser createOrSaveEndUser(@RequestParam("email") String email, @RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName, @RequestParam("roles") String roles) {
-
-		EndUser endUser = new EndUser();
-
-		endUser.email(email).firstName(firstName).lastName(lastName).roles(roles);
-		if (!endUserService.checkEndUserExistsByEmail(email)) {
-			endUserService.save(endUser);
+		
+		EndUser endUser = endUserService.getByEmail(email);
+		if(endUser==null) {
+			endUser=new EndUser();
 		}
+		
+		endUser.email(email).firstName(firstName).lastName(lastName).roles(roles);
+		endUserService.save(endUser);
 		return endUser;
 	}
 
